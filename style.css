@@ -41,7 +41,9 @@ body {
     justify-content: center;
     align-items: center;
     margin-right: 20px;
+    cursor: pointer;
 }
+
 
 @media (max-width:970px) {
 

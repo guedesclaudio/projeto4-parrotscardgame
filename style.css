@@ -44,6 +44,14 @@ body {
     cursor: pointer;
 }
 
+.clicked img {
+    width: 100px;
+    height: 100px;
+}
+
+.hidden {
+    display: none;
+}
 
 @media (max-width:970px) {
 

@@ -5,13 +5,16 @@ let plays = 0
 let cardArray = []
 let compareArray = []
 let frontBackArray = []
+let altArray = []
 let position = 0
 let win = 0
 let varia = true
 let time = 0
+let alt = 0
+let hack
+//BUG QUANDO CLICA DUAS VEZES NA PRIMEIRA CARTA; CRIAR ALGUMA COISA QUE DIFERENCIA UMA CARTA DA OUTRA E DEPOIS COMPARA-LAS PARA PODER RODAR A FUNCAO, VER SE DAR PRA EXPLORAR O ALT DA IMG - acho que resolvi
 
-
-setInterval(function () {time+=1; console.log(time);}, 1000)
+setInterval(function () {time+=1; console.log(time)}, 1000)
 
 
 //Verificação da entrada de cartas
@@ -36,17 +39,18 @@ function comparador() {
 
 //Criando as cartas
 function createElement() {
-    
+    alt +=1
     const newCard = `
-    <div class="card" data-identifier="card" onclick="gameCards(this)">
-        <div class="front-card" data-identifier="front-face"><img src="img/front 1.png" alt=""></div>
-        <div class="back-card hidden" data-identifier="back-face"><img src="img/${myArray[position]}.gif" alt=""></div>
+    <div class="card card1" data-identifier="card" onclick="gameCards(this)">
+        <div class="front-card" data-identifier="front-face"><img src="img/front 1.png" alt="${alt}"></div>
+        <div class="back-card hidden" data-identifier="back-face"><img src="img/${myArray[position]}.gif" alt="${alt}"></div> 
     </div>
     `
+    alt +=1
     const newCard2 = `
-    <div class="card" data-identifier="card" onclick="gameCards(this)">
-        <div class="front-card" data-identifier="front-face"><img src="img/front 1.png" alt=""></div>
-        <div class="back-card hidden" data-identifier="back-face"><img src="img/${myArray[position]}.gif" alt=""></div>
+    <div class="card card2" data-identifier="card" onclick="gameCards(this)">
+        <div class="front-card" data-identifier="front-face"><img src="img/front 1.png" alt="${alt}"></div>
+        <div class="back-card hidden" data-identifier="back-face"><img src="img/${myArray[position]}.gif" alt="${alt}"></div>
     </div>
     `
     cardArray.push(newCard)
@@ -70,23 +74,39 @@ function gameCards(element) {
     if (element.querySelector(".front-card").classList.contains("block") == false && varia == true) {
 
         plays += 1
-        //console.log(plays)
-        element.querySelector(".front-card").classList.add("hidden")
-        element.querySelector(".back-card").classList.remove("hidden")
+        hack = false
         elementFront = element.querySelector(".front-card")
         elementBack = element.querySelector(".back-card")
 
+        elementFront.classList.add("hidden")
+        elementBack.classList.remove("hidden")
+        
         frontBackArray.push(elementFront)
         frontBackArray.push(elementBack)
 
-
         elementCard = element.querySelector(".back-card img").src
+        elementAlt = element.querySelector(".back-card img").alt
         compareArray.push(elementCard)
+        altArray.push(elementAlt)
+        //console.log(altArray)
+
+
+        if (altArray.length === 2 && (altArray[0] == altArray[1])) {
+            //console.log("nao vale")
+            hack = true
+            //console.log(hack)
+            altArray = altArray.splice()
+            //console.log(altArray)
+            alert("Não clique na mesma carta mais de uma vez! Ela voltará a virar de costas")
+        }
 
         if (compareArray.length === 2) {
+            //console.log("passei")
             varia = false
             compareCards()
             compareArray = compareArray.splice()
+            altArray = altArray.splice()
+            //console.log(altArray)
         }
 
     }
@@ -95,31 +115,32 @@ function gameCards(element) {
 
 function compareCards() {
 
-    if (compareArray[0] == compareArray[1]) {
+    if ((compareArray[0] == compareArray[1]) && hack != true) {
+        
         frontBackArray[0].classList.add("block")
         frontBackArray[2].classList.add("block")
         frontBackArray = frontBackArray.splice()
         win += 1
+        //console.log(`voce tem ${win} vitorias`)
         varia = true
 
         if (win === numberCards/2) {
-            alert(`Você venceu com ${plays} jogadas em ${time} segundos`)
-            useranswer = prompt("Você deseja jogar novamente? Digite sim ou nao")
-            useranswer = useranswer.toLowerCase()
+            setTimeout(function () {
+                alert(`Você venceu com ${plays} jogadas em ${time} segundos`)
+                useranswer = prompt("Você deseja jogar novamente? Digite sim ou nao")
+                useranswer = useranswer.toLowerCase()
 
-            if (useranswer == 'sim') {
-                location.reload()
-            }
+                if (useranswer == 'sim') {
+                    location.reload()
+                }
 
-            else if (useranswer != 'nao') {
-                alert("Não foi possível identificar o que digitou, recarregue a página caso queira jogar novamente")
-            }
-            
+                else if (useranswer != 'nao') {
+                    alert("Não foi possível identificar o que digitou, recarregue a página caso queira jogar novamente")
+                }
+            },1000)
         }
-        //console.log("sao iguais")
     }
     else {
-        //console.log("nao sao iguais")
         setTimeout('removeCards()', 1000)
     }
 }
@@ -137,21 +158,3 @@ function removeCards() {
         
     }
 }
-
-
-/*
-function verifyCardClicked() {
-    
-    const clickedElement = element.classList.contains("clicked")
-
-    if (clickedElement == false) {
-
-        element.classList.add("clicked")
-        plays += 1
-
-        element.querySelector(".front-card").classList.add("hidden")
-        element.querySelector(".back-card").classList.remove("hidden")
-
-    }
-    
-}*/

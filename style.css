@@ -21,6 +21,29 @@ body {
     line-height: 65.63px;
 }
 
+.watch {
+    text-align: right;
+    font-family: "Arial", sans-serif;
+    color: white;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.watch h1, .watch h2 {
+    width: 80px;
+    height: 60px;
+    font-size: 40px;
+    background-color: #75B79E;
+    border-radius: 14px 0 0 14px;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.danger {
+    color: red;
+}
+
 .container {
     max-width: 970px;
     min-height: 330px;
@@ -42,6 +65,7 @@ body {
     align-items: center;
     margin-right: 20px;
     cursor: pointer;
+    transition: transform .4s;
 }
 
 .card img {
@@ -52,6 +76,11 @@ body {
 .hidden {
     display: none;
 }
+
+.turn {
+    transform: rotateY(180deg);
+}
+
 
 @media (max-width:970px) {
 

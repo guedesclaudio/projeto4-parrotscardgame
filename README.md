@@ -23,7 +23,7 @@
 
 # Preview
 <div align="center">
-  <a href="https://guedesclaudio.github.io/projeto2-instagram/"><img src="img/layout.png" width="600"></a>
+  <a href="https://guedesclaudio.github.io/projeto4-parrotscardgame/"><img src="img/layout-parrot.png" width="600"></a>
   <br>
   <br>
   <p>Clique na imagem para acessar a página</p>

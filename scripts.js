@@ -108,7 +108,7 @@ function gameCards(element) {
         if (altArray.length === 2 && (altArray[0] == altArray[1])) {
             hack = true
             altArray = altArray.splice()
-            alert("Não clique na mesma carta mais de uma vez! Ela voltará a virar de costas")
+            alert("Não clique na mesma carta mais de uma vez! Ela voltará a virar de costas e contará como uma jogada")
         }
 
         if (compareArray.length === 2) {

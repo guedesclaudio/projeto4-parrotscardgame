@@ -6,21 +6,20 @@
   <br>
 - JavaScript puro
 
-# Tópicos explorados
-
-- Funções JavaScript
-- Arrays
-- Delays
-- DOM
-- CSS transitions
+# Funcionalidades
+- Opção de 4 até 14 cartas
+- Cartas colocadas em posições aleatórias
+- Objetivo de achar a carta correspondente ao par
+- O tempo é cronometrado
+- Quantidade de jogadas é salva
 
 # Tecnologias 
-- <img align="center" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
-- <img align="center" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
-- <img align="center" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg">
-- <img align="center" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg">
-- <img align="center" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg">
-- <img align="center" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg">
+- HTML5
+- CSS3
+- JAVASCRIPT
+- GIT
+- GITHUB
+- VSCODE 
 
 # Preview
 <div align="center">
